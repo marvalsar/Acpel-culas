@@ -22,6 +22,11 @@ const GeneroShema = Shema({
         require : true,
         default: Date.now
     },
-}, {
-    timestamps: true
+    fechaActualizacion: {
+        type: Date,
+        require : true,
+        default: Date.now
+    }
 });
+
+module.exports = model("Genero", GeneroShema);
