@@ -1,6 +1,5 @@
-const {Shema, model} = require('mongoose');
-
-const DirectorShema = Shema({
+const {Schema, model} = require('mongoose');
+const DirectorSchema = Schema({
     nombres: {
         type: String,
         required: [true, "El nombre del director es obligatorio"],
@@ -25,4 +24,4 @@ const DirectorShema = Shema({
     }
 });
 
-module.exports = model("Director", DirectorShema);
+module.exports = model("Director", DirectorSchema);

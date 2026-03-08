@@ -1,6 +1,6 @@
-const {Shema, model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 
-const GeneroShema = Shema({
+const GeneroShema = Schema({
     nombre: {
         type: String,
         required: [true, "El nombre del género es obligatorio"],
