@@ -29,4 +29,4 @@ const TipoShema = Schema({
     }
 });
 
-module.exports = model("Tipo", TipoShema);
+module.exports = model("Tipo", TipoShema);  
