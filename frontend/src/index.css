@@ -33,3 +33,17 @@ body {
 #root {
   width: 100%;
 }
+.card-image {
+  width: 100%;
+  height: 320px;       /* Altura fija para que el grid sea uniforme */
+  object-fit: cover;   /* Esto evita que la imagen se estire feo */
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.glass-card:hover .card-image {
+  transform: scale(1.03); /* Efecto de zoom ligero al pasar el mouse */
+}

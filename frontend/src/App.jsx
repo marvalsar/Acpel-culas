@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react';
 import api from './services/api';
 import './index.css';
 
+
 function App() {
   const [medias, setMedias] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,6 +19,7 @@ function App() {
     // Aquí hacemos la llamada a tu ruta original de /api/medias
     api.get('/medias')
       .then(response => {
+        console.log("Datos de MongoDB:", response.data);
         // Asumiendo que Mongoose nos devuelve un array directo
         setMedias(Array.isArray(response.data) ? response.data : []);
         setLoading(false);
@@ -49,6 +51,11 @@ function App() {
             ) : (
               medias.map(media => (
                 <div key={media._id} className="glass-card">
+                <img
+                    src={media.Imagen || 'https://via.placeholder.com/300x450?text=Sin+Póster'}
+                    alt={media.titulo}
+                    className="card-image"
+                />
                   <h2>{media.titulo || 'Módulo sin registrar'}</h2>
                   <p className="synopsis">{media.sinopsis || 'Aún no hay sinopsis agregada para este ítem.'}</p>
                   <div className="card-footer">
