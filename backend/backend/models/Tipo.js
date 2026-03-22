@@ -1,9 +1,9 @@
-const {Schema, model} = require('mongoose');
+const {Shema, model} = require('mongoose');
 
-const ProductoraSchema = Schema({
+const TipoShema = Schema({
     nombre: {
         type: String,
-        required: [true, "El nombre de la productora es obligatorio"],
+        required: [true, "El nombre del tipo es obligatorio"],
         unique: true,
         trim: true
     },
@@ -19,18 +19,14 @@ const ProductoraSchema = Schema({
     },
     fechaCreacion: {
         type: Date,
-        required : true,
+        require : true,
         default: Date.now
     },
     fechaActualizacion: {
         type: Date,
-        required : true,
+        require : true,
         default: Date.now
-    },
-    slogan: {
-        type: String,
-        trim: true
     }
 });
 
-module.exports = model("Productora", ProductoraSchema);
+module.exports = model("Tipo", TipoShema);

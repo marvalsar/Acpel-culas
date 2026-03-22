@@ -14,14 +14,14 @@ const getProductoras = async (req = request, res = response) => {
 
 const createProductora = async (req = request, res = response) => {
     try {
-        const { nombre, descripcion, slogan } = req.body;
+        const { nombreProductora, descripcion,slogan } = req.body;
 
-        const productoraDB = await Productora.findOne({ nombre });
+        const productoraDB = await Productora.findOne({ nombreProductora});
         if (productoraDB) {
             return res.status(400).json({ message: `La productora "${nombre}" ya existe` });
         }
 
-        const productora = new Productora({ nombre, descripcion, slogan });
+        const productora = new Productora({ nombreProductora, descripcion, slogan });
 
         await productora.save();
         res.status(201).json(productora);

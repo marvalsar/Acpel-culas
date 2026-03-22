@@ -1,9 +1,8 @@
 const {Schema, model} = require('mongoose');
-
-const ProductoraSchema = Schema({
-    nombre: {
+const DirectorSchema = Schema({
+    nombres: {
         type: String,
-        required: [true, "El nombre de la productora es obligatorio"],
+        required: [true, "El nombre del director es obligatorio"],
         unique: true,
         trim: true
     },
@@ -13,24 +12,16 @@ const ProductoraSchema = Schema({
         enum: ["activo", "inactivo"],
         default: "activo"
     },
-    descripcion: {
-        type: String,
-        trim: true
-    },
     fechaCreacion: {
         type: Date,
-        required : true,
+        require : true,
         default: Date.now
     },
     fechaActualizacion: {
         type: Date,
-        required : true,
+        require : true,
         default: Date.now
-    },
-    slogan: {
-        type: String,
-        trim: true
     }
 });
 
-module.exports = model("Productora", ProductoraSchema);
+module.exports = model("Director", DirectorSchema);
