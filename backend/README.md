@@ -238,7 +238,6 @@ PORT=4000
 MONGO_URI=mongodb+srv://usuario:password@cluster.mongodb.net/nombre_bd?retryWrites=true&w=majority
 ```
 
-<<<<<<< HEAD
 **Nota:** Nunca commits el archivo `.env` en el repositorio. Está incluido en `.gitignore` por seguridad.
 
 ---
@@ -251,9 +250,6 @@ El proyecto implementa las siguientes medidas de seguridad:
 - **Archivo .gitignore:** Excluye archivos sensibles del control de versiones
 - **Validación de datos:** Validaciones robustas en modelos y controladores
 - **CORS configurado:** Control de acceso desde diferentes orígenes
-=======
-**Nota:** Nunca commits el archivo `.env` en el repositorio.
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
 
 ---
 
@@ -313,7 +309,6 @@ Para reportar bugs o solicitar features, abre un issue en el repositorio.
 - ✅ Configuración de MongoDB Atlas
 - ✅ Implementación de endpoints para géneros
 - ✅ Documentación completa de API
-<<<<<<< HEAD
 - ✅ Configuración de variables de entorno con plantilla (.env.template)
 - ✅ Archivo .gitignore para seguridad
 - ✅ Estructura del proyecto optimizada
@@ -321,9 +316,3 @@ Para reportar bugs o solicitar features, abre un issue en el repositorio.
 ---
 
 **Última actualización:** 8 de marzo de 2026
-=======
-
----
-
-**Última actualización:** 6 de marzo de 2026
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
