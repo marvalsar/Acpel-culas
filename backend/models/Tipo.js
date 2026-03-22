@@ -1,10 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-<<<<<<< HEAD
 const TipoSchema = Schema({
-=======
-const TipoShema = Schema({
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
     nombre: {
         type: String,
         required: [true, "El nombre del tipo es obligatorio"],
@@ -33,8 +29,4 @@ const TipoShema = Schema({
     }
 });
 
-<<<<<<< HEAD
 module.exports = model("Tipo", TipoSchema);
-=======
-module.exports = model("Tipo", TipoShema);
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)

@@ -55,16 +55,12 @@ npm install
 ```
 
 3. **Configurar variables de entorno:**
-<<<<<<< HEAD
 Crear un archivo `.env` en la raíz del directorio `backend` basado en la plantilla `.env.template`:
 ```bash
 cp .env.template .env
 ```
 
 Luego editar el archivo `.env` con tus credenciales reales:
-=======
-Crear un archivo `.env` en la raíz del directorio `backend`:
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
 ```env
 PORT=4000
 MONGO_URI=mongodb+srv://usuario:contraseña@cluster.mongodb.net/nombrebd?retryWrites=true&w=majority
@@ -95,18 +91,12 @@ backend/
 │   └── Genero.js               # Esquema y modelo de Género
 ├── routes/
 │   └── genero.js               # Rutas de géneros
-<<<<<<< HEAD
 ├── .env.template               # Plantilla de variables de entorno
 ├── .gitignore                  # Archivos ignorados por Git
 ├── index.js                    # Punto de entrada de la aplicación
 ├── package.json                # Configuración de npm
 ├── package-lock.json           # Lockfile de dependencias
 └── README.md                   # Este archivo
-=======
-├── index.js                    # Punto de entrada de la aplicación
-├── package.json                # Configuración de npm
-└── Readme                      # Este archivo
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
 ```
 
 ---
@@ -233,14 +223,11 @@ Content-Type: application/json
 
 ## 📝 Variables de Entorno
 
-<<<<<<< HEAD
 El proyecto incluye un archivo `.env.template` como plantilla. Para configurar las variables de entorno:
 
 1. Copiar la plantilla: `cp .env.template .env`
 2. Editar el archivo `.env` con tus credenciales reales
 
-=======
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
 El archivo `.env` debe contener:
 
 ```env

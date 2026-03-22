@@ -2,11 +2,7 @@ const {Schema, model} = require('mongoose');
 const Director = require('./Director');
 const Productora = require('./Productora');
 
-<<<<<<< HEAD
 const MediaSchema = Schema({
-=======
-const MediaShema = Schema({
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
     serial: {
         type: Number,
         required: [true, "El serial de la media es obligatorio"],
@@ -32,12 +28,12 @@ const MediaShema = Schema({
     },
     fechaCreacion: {
         type: Date,
-        require : true,
+        required : true,
         default: Date.now
     },
     fechaActualizacion: {
         type: Date,
-        require : true,
+        required : true,
         default: Date.now
     },
     anioEstreno: {
@@ -66,8 +62,5 @@ const MediaShema = Schema({
     },
 });
 
-<<<<<<< HEAD
+
 module.exports = model("Media", MediaSchema);
-=======
-module.exports = model("Media", MediaShema);
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)

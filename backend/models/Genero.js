@@ -1,10 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-<<<<<<< HEAD
 const GeneroSchema = Schema({
-=======
-const GeneroShema = Schema({
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
     nombre: {
         type: String,
         required: [true, "El nombre del género es obligatorio"],
@@ -33,8 +29,4 @@ const GeneroShema = Schema({
     }
 });
 
-<<<<<<< HEAD
 module.exports = model("Genero", GeneroSchema);
-=======
-module.exports = model("Genero", GeneroShema);
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)

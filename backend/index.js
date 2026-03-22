@@ -10,14 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/generos', require('./routes/genero'));
-<<<<<<< HEAD
 app.use('/api/directores', require('./routes/director'));
 app.use('/api/medias', require('./routes/media'));
 app.use('/api/productores', require('./routes/productora'));
 app.use('/api/tipos', require('./routes/tipo'));
-=======
->>>>>>> d576f0e (creacion de frontend, correcciones entre otros)
-
 getConnection();
 
 app.listen(PORT, () => {
