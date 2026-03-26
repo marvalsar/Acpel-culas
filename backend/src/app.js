@@ -7,6 +7,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
+console.log("Revisando URI:", process.env.MONGO_URI);
+
 // Importar conexión original a MongoDB
 const { getConnection } = require('../db/db_connection-mongo');
 const apiRoutes = require('./routes/api');

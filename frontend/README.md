@@ -1,16 +1,52 @@
-# React + Vite
+# Acpel-culas (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto frontend de la aplicación "Acpel-culas". Utiliza React, Vite y Fetch/Axios para consumir una API REST local (en backend/).
 
-Currently, two official plugins are available:
+## 📦 Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 18+ (recomendado 20)
+- npm 9+ (o yarn/pnpm)
+- Backend (servidor) levantado en `http://localhost:3000` (por defecto)
 
-## React Compiler
+## 🚀 Iniciar en local
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Abrir terminal en `frontend/`
+2. `npm install`
+3. `npm run dev`
+4. Abrir `http://localhost:5173` (o la URL que muestre Vite)
 
-## Expanding the ESLint configuration
+## 🛠️ Scripts útiles
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `npm run dev`: arranca el servidor de desarrollo con recarga en caliente.
+- `npm run build`: compila el frontend estático en `dist/`.
+- `npm run preview`: prueba la versión de producción local.
+
+## 🔗 Backend (API)
+
+En este repositorio la API está en `backend/`:
+
+- `npm start` (desde `backend/`) arranca el servidor Express/Mongo que sirve recursos de `media`, `director`, `genero`, `productora`, `tipo`.
+
+### 🧪 Flujo de prueba rápido
+
+1. Levantar backend: `cd backend && npm install && npm start`
+2. Levantar frontend: `cd frontend && npm install && npm run dev`
+3. Abrir app en navegador e ingresar datos de películas/géneros destacados.
+
+## ℹ️ Estructura del frontend
+
+- `src/main.jsx`: punto de entrada.
+- `src/App.jsx`: componente principal.
+- `src/App.css` y `src/index.css`: estilos globales.
+- `src/services/api.js`: cliente HTTP hacia la API (configurar host/puerto si es necesario).
+
+## ✅ Buenas prácticas
+
+- Mantener variables de entorno en `.env` en `frontend/` para base URL de API (p.ej. `VITE_API_URL=http://localhost:3000`).
+- Usar control de estado local con hooks (`useState`, `useEffect`).
+- Configurar **eslint** y **prettier** según tu preferencia.
+
+## 💡 Notas
+
+- Este README está en español para facilitar el onboarding en equipos hispanohablantes.
+- Ajusta puertos si tienes servicios ocupando `3000` o `5173`.

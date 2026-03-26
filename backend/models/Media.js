@@ -4,8 +4,7 @@ const Productora = require('./Productora');
 
 const MediaSchema = Schema({
     serial: {
-        type: Number,
-        required: [true, "El serial de la media es obligatorio"],
+        type: String,
         unique: true,
         trim: true
     },
@@ -62,5 +61,28 @@ const MediaSchema = Schema({
     },
 });
 
+MediaSchema.pre('save', async function() {
+    if (this.serial && /^PEL-\d{4}$/.test(this.serial)) {
+        return;
+    }
+    try {
+        // Encontrar la última película creada cuyo serial empiece por PEL-
+        const lastMedia = await this.constructor.findOne({ serial: /^PEL-/ }).sort({ serial: -1 });
+        let newSerialNum = 1;
+
+        if (lastMedia && lastMedia.serial) {
+            const lastSerialMatch = lastMedia.serial.match(/^PEL-(\d+)$/);
+            if (lastSerialMatch && lastSerialMatch[1]) {
+                newSerialNum = parseInt(lastSerialMatch[1], 10) + 1;
+            }
+        }
+
+        // Formatear a 4 dígitos, ej: PEL-0001, PEL-0002...
+        this.serial = `PEL-${newSerialNum.toString().padStart(4, '0')}`;
+
+    } catch (error) {
+        throw error;
+    }
+});
 
 module.exports = model("Media", MediaSchema);

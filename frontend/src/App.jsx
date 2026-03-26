@@ -1,80 +1,44 @@
-/**
- * Propósito: Componente principal y UI de la aplicación.
- * Razón Técnica: Aquí orquestamos la obtención de datos llamando a `api.js` (Separation of Concerns).
- * El diseño aplica las variables globales de CSS para lograr un aspecto profesional Glassmorphism, 
- * renderizando la información proveniente directamente de MongoDB (siempre y cuando la DB devuelva registros).
- */
-
-import React, { useEffect, useState } from 'react';
-import api from './services/api';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import CatalogPage from './pages/CatalogPage';
+import NavBar from './components/NavBar';
 import './index.css';
 
+// Componentes del Dashboard de Administración
+import AdminDirectorPage from './pages/AdminDirectorPage';
+import AdminGeneroPage from './pages/AdminGeneroPage';
+import AdminProductoraPage from './pages/AdminProductoraPage';
+import AdminTipoPage from './pages/AdminTipoPage';
+import AdminMediaPage from './pages/AdminMediaPage';
 
 function App() {
-  const [medias, setMedias] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    // Aquí hacemos la llamada a tu ruta original de /api/medias
-    api.get('/medias')
-      .then(response => {
-        console.log("Datos de MongoDB:", response.data);
-        // Asumiendo que Mongoose nos devuelve un array directo
-        setMedias(Array.isArray(response.data) ? response.data : []);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Error cargando medios de MongoDB:", err);
-        setError('No se pudo conectar con la base de datos real. Verifica que MongoDB esté corriendo.');
-        setLoading(false);
-      });
-  }, []);
-
   return (
-    <div className="app-container">
-      <header className="glass-header">
-        <h1>🎬 Acpel Culas API</h1>
-        <p>Panel Principal (Conectado a MongoDB Real)</p>
-      </header>
+    <>
+      <NavBar />
+      <div className="main-layout">
+        <Routes>
+          <Route path="/" element={<CatalogPage />} />
+          
+          {/* Rutas de Administrador */}
+          <Route path="/admin/directores" element={<AdminDirectorPage />} />
+          <Route path="/admin/generos" element={<AdminGeneroPage />} />
+          <Route path="/admin/productoras" element={<AdminProductoraPage />} />
+          <Route path="/admin/tipos" element={<AdminTipoPage />} />
+          <Route path="/admin/medias" element={<AdminMediaPage />} />
+        </Routes>
+      </div>
 
-      <main className="content">
-        {loading && <div className="loader">Sincronizando con MongoDB...</div>}
-        {error && <div className="error-card">{error}</div>}
-
-        {!loading && !error && (
-          <div className="grid-container">
-            {medias.length === 0 ? (
-              <div className="empty-state">
-                <p>Base de datos conectada correctamente, pero no hay 'Medias' disponibles.</p>
-              </div>
-            ) : (
-              medias.map(media => (
-                <div key={media._id} className="glass-card">
-                <img
-                    src={media.Imagen || 'https://via.placeholder.com/300x450?text=Sin+Póster'}
-                    alt={media.titulo}
-                    className="card-image"
-                />
-                  <h2>{media.titulo || 'Módulo sin registrar'}</h2>
-                  <p className="synopsis">{media.sinopsis || 'Aún no hay sinopsis agregada para este ítem.'}</p>
-                  <div className="card-footer">
-                    <span className="badge">{media.anioEstreno || '0000'}</span>
-                    <button className="primary-btn">Editar Medio</button>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        )}
-      </main>
-
-      {/* Estilos Modulares Internos para mantener un solo archivo limpio en este punto */}
       <style>{`
+         /* ESTILOS GLOBALES DE LA PLATAFORMA MOVIDOS AQUI DESDE EL VIEJO APP.JSX */
+         .main-layout {
+           padding: 2rem;
+           max-width: 1200px;
+           margin: 0 auto;
+         }
+         
         .app-container {
-          padding: 2rem;
-          max-width: 1200px;
-          margin: 0 auto;
+          padding: 0;
+          max-width: 100%;
         }
         .glass-header {
           background: var(--glass-bg);
@@ -104,6 +68,7 @@ function App() {
           gap: 1.5rem;
         }
         .glass-card {
+          position: relative;
           background: var(--glass-bg);
           backdrop-filter: blur(8px);
           border: 1px solid var(--glass-border);
@@ -121,6 +86,26 @@ function App() {
           transform: translateY(-5px);
           box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
           border-color: rgba(255, 255, 255, 0.2);
+        }
+        .card-serial-badge {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: rgba(16, 185, 129, 0.9);
+          color: white;
+          padding: 0.3rem 0.8rem;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 0.85rem;
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+          z-index: 10;
+        }
+        .card-image {
+          width: 100%;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 1rem;
         }
         .glass-card h2 {
           margin: 0 0 1rem 0;
@@ -163,6 +148,19 @@ function App() {
         .primary-btn:hover {
           background: var(--accent-hover);
         }
+        .danger-btn {
+          background: #ef4444;
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        .danger-btn:hover {
+          background: #dc2626;
+        }
         .loader, .error-card, .empty-state {
           text-align: center;
           padding: 3rem;
@@ -175,6 +173,26 @@ function App() {
           color: #f87171;
           border-color: rgba(248, 113, 113, 0.3);
         }
+        
+        .admin-page-header {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           margin-bottom: 2rem;
+        }
+        .admin-table {
+           width: 100%;
+           border-collapse: collapse;
+        }
+        .admin-table th, .admin-table td {
+           padding: 1rem;
+           text-align: left;
+           border-bottom: 1px solid var(--glass-border);
+        }
+        .admin-table th {
+           background: rgba(255, 255, 255, 0.05);
+        }
+        
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
@@ -184,7 +202,7 @@ function App() {
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
-    </div>
+    </>
   );
 }
 
